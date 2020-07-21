@@ -135,28 +135,6 @@ End Sub
 Private Sub xinputClass_OnDeviceDisconnected()
     isconnected = False
 End Sub
-Private Sub thingClass_OnTake(ByVal sender As String, ByVal index As Long)
-    'Took item at POV
-End Sub
-Private Sub buttonClass_OnPush(ByVal iButton As Long)
-    'pushed button used
-End Sub
-Private Sub buttonClass_OnStruck(ByVal iButton As Long, ByVal jProjectile As Long)
-    'button struck
-End Sub
-Private Sub ProjectileClass_OnStrike(ByVal iProjectile As Long, ByVal jButton As Long, ByVal x As Single, ByVal y As Single, ByVal z As Single, ByVal R As Single)
-    '    Dim v2 As D3DVECTOR
-    '    v2.x = x
-    '    v2.y = y
-    '    v2.z = z
-    '    soundClass.Bang v2, 0.7, 44100 - R * 1000
-End Sub
-Private Sub targetClass_OnProjectileHit()
-    '"Hit"
-End Sub
-Private Sub mapClass_OnLoadComplete()
-    ' "Map Loaded "
-End Sub
 Private Sub TMRPoll_Elapsed()
     'main game rendering logic here
     Dim inp As String
@@ -167,7 +145,6 @@ Private Sub TMRPoll_Elapsed()
     inp = inp & "Right Thumb Y: " & oldis.Gamepad.sThumbRY & vbCrLf
     inp = inp & "Left Trigger: " & oldis.Gamepad.bLeftTrigger & vbCrLf
     inp = inp & "Right Trigger: " & oldis.Gamepad.bRightTrigger & vbCrLf
-    inp = inp & "Battery: " & xinputClass.BatteryLevel(0) & vbCrLf
     If Keyb(KeyFire) = True Then
         inp = inp & "Firing"
     Else
@@ -178,4 +155,9 @@ Private Sub TMRPoll_Elapsed()
         Me.Cls
         Me.Print inp
     End If
+End Sub
+Private Sub TMRPollBatteries_Elapsed()
+   Dim inp As String
+   inp = inp & "Battery: " & xinputClass.BatteryLevel(0) & vbCrLf
+
 End Sub
